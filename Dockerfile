@@ -7,7 +7,8 @@
 # Use golang image to run https://github.com/yaegashi/muslstack
 # on hugo executable to extend its default thread stack size to 8MB
 # to work around segmentation fault issues.
-FROM golang:1.15-alpine
+FROM klakegg/hugo:0.80.0-ext-ubuntu
+
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends \
 	ca-certificates  \
@@ -16,5 +17,4 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/*
 
 COPY action.sh /usr/bin/action.sh
-
-ENTRYPOINT ["action.sh"]
+ENTRYPOINT ["/bin/bash", "action.sh"]

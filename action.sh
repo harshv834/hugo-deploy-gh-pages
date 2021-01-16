@@ -18,7 +18,7 @@ if [[ -z "${TARGET_REPO}" ]]; then
 fi
 
 if [[ -z "${TARGET_BRANCH}" ]]; then
-    TARGET_BRANCH=master
+    TARGET_BRANCH=main
     echo "No TARGET_BRANCH was set, so defaulting to ${TARGET_BRANCH}"
 fi
 
@@ -58,18 +58,18 @@ echo "Committing the site to git and pushing"
 git init
 
 if ! git config --get user.name; then
-    git config --global user.name "${GITHUB_ACTOR}"
+    git config --global user.name "Harsh"
 fi
 
 if ! git config --get user.email; then
-    git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+    git config --global user.email "$harshv834@gmail.com"
 fi
 
 echo "Getting hash for base repository commit"
 HASH=$(echo "${GITHUB_SHA}" | cut -c1-7)
 
 # Now add all the changes and commit and push
-if [[ "${TARGET_BRANCH}" != "master" ]]; then
+if [[ "${TARGET_BRANCH}" != "main" ]]; then
   git checkout -b ${TARGET_BRANCH}
 fi
 
